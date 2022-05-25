@@ -1,0 +1,119 @@
+def Clear():
+
+	print('\n'*100)
+
+def start():
+
+	Clear()
+
+	data = []
+
+	while (True):
+
+		try:
+
+			a = int(input("\n1-Add, 2-Read, 3-Delit, 4-load, 5-save, 0-Close.\n"))
+
+			if a == 1:
+
+				d=input("\nEnter input information_")
+
+				if d != "BACK":
+
+					data.append(d)
+
+					Clear()
+
+					print ("\n", data, "\n")
+
+			if a == 2:
+
+				d=input("\nSpecify cell number.")
+
+				d = int(d)
+
+				Clear()
+
+				print("\n",data[d-1])
+
+			if a == 3:
+
+				d=input("\nSpecify a cell to delete.")
+
+				d = int(d)
+
+				del data[d-1]
+
+				Clear()
+
+				print ("\n", data, "\n")
+
+			if a == 4:
+
+				f = open("C:/Save/Save.txt")
+
+				data = f.readlines()				
+
+				f.close()
+
+				l = len(data)
+
+				for i in range(l):
+
+					e = data[i-1]
+
+					del data[i-1]
+
+					e = e.replace("\n","")
+
+					data.append(e)
+
+				for i in range(l):
+
+					e = data[i-1]
+
+					del data[i-1]
+
+					data.append(e)
+
+				Clear()
+
+				print("\n",data, '\n','\a')
+
+			if a == 5:
+
+				f = open("C:/Save/Save.txt", 'r+')
+
+				f.truncate(0)
+
+				l=(len(data))
+
+				for i in range(l):
+
+					f.write(data[i])
+
+					f.write('\n')
+
+				Clear()
+
+				print("\n",data, '\n','\a')
+
+				f.close()
+
+			if a == 21:
+
+				l=len(data)
+
+				print ("\n", l, data)
+
+		except:
+
+			print('Error!\n')
+
+			continue
+
+		if a == 0:
+
+			break
+
+start()
